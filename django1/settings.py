@@ -31,12 +31,12 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    "django.contrib.admin",
-    "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
+    "django.contrib.admin",  # Aplicação de administração do Django
+    "django.contrib.auth",  # Aplicação de autenticação do Django
+    "django.contrib.contenttypes",  # Aplicação de conteúdo do Django
+    "django.contrib.sessions",  # Aplicação de sessões do Django
+    "django.contrib.messages",  # Aplicação de mensagens do Django
+    "django.contrib.staticfiles",  # Aplicação de arquivos estáticos do Django
     "core",
 ]
 
