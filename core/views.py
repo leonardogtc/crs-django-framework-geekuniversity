@@ -12,7 +12,12 @@ por renderizar as páginas HTML do arquivo chamado:
 
 
 def index(request):
-    return render(request, "index.html")
+    context = {
+        "curso": "Programação WEB com Django Framework",
+        "empresa": "Geek University",
+        "instrutor": "José da Silva",
+    }
+    return render(request, "index.html", context)
 
 
 def contato(request):
