@@ -12,6 +12,19 @@ por renderizar as páginas HTML do arquivo chamado:
 
 
 def index(request):
+    # print(request)
+    print(request.user)
+    # print(request.user.is_authenticated)
+    # print(request.user.username)
+    # print(request.user.email)
+    # print(request.user.get_full_name())
+    # print(request.user.get_short_name())
+
+    if request.user.is_authenticated:
+        print("Usuário autenticado")
+    else:
+        print("Usuário não autenticado")
+
     context = {
         "curso": "Programação WEB com Django Framework",
         "empresa": "Geek University",
