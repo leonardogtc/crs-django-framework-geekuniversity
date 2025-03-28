@@ -3,9 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Principal</title>
+    <title>Principal {{ produto.id }}</title>
 </head>
 <body>
     <h1>{{ curso }}</h1>
+    <h2>{{ empresa }}</h2>
+    <h3>{{ instrutor }}</h3>
+
+    <hr>
+
+    <ul>
+        {% for produto in produtos %}
+            <li><a href="{% url 'produto' produto.id %}">{{ produto.nome }}</a> | {{ produto.preco }} | {{ produto.estoque }}</li>
+        {% endfor %}
+    </ul>
+
 </body>
 </html>
