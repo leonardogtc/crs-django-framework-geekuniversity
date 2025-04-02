@@ -1,22 +1,66 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Principal {{ produto.id }}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <title>Principal</title>
 </head>
 <body>
-    <h1>{{ curso }}</h1>
-    <h2>{{ empresa }}</h2>
-    <h3>{{ instrutor }}</h3>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <h1>{{ curso }}</h1>
+                <h2>{{ empresa }}</h2>
+                <h3>{{ instrutor }}</h3>
+            </div>
+        </div>
+    </div>
 
     <hr>
 
-    <ul>
-        {% for produto in produtos %}
-            <li><a href="{% url 'produto' produto.id %}">{{ produto.nome }}</a> | {{ produto.preco }} | {{ produto.estoque }}</li>
-        {% endfor %}
-    </ul>
+    <div class="container">
+        <div class="row">
+            <div class="col mt-2">
+                <ul>
+                    {% for produto in produtos %}
+                        <li><a href="{% url 'produto' produto.id %}">{{ produto.nome }}</a> | {{ produto.preco }} | {{ produto.estoque }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col mt-2">
+                <h2>Carregamento de Imagens</h2>
+                <img src="{% static "images/mapa.png" %}" alt="">
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col mt-2">
+                <h2>JavaScript</h2>
+                <a
+                    name=""
+                    id=""
+                    class="btn btn-primary"
+                    href="#"
+                    role="button"
+                    onclick="teste()"
+                    >Clique aqui!</a
+                >
+                
+            </div>
+        </div>
+    </div>
+    
+
+<script src="{% static "js/script.js" %}"></script>
+<script src="{% static "js/bootstrap.bundle.min.js" %}"></script>
 </body>
 </html>

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -23,9 +24,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-%rn0jfyt4js_^!8!tpl$vk&dq28tv1z(8f50-&lxw^rph7e=6#"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
 
-ALLOWED_HOSTS = []
+# NOTA DO PROGRAMADOR:
+# Se o valor for True:
+# - O Django mostrará mensagens de erro detalhadas e foco no desenvolvimento.
+# - O static será servido automaticamente.
+#
+# Se o valor for False:
+# - O Django não mostrará mensagens de erro detalhadas e foco na produção.
+# - O static não será servido automaticamente.
+DEBUG = False
+
+ALLOWED_HOSTS = [
+    "projetodjangobasico.local", "127.0.0.1"
+]  # Permite todos os hosts "*". Para produção, deve ser alterado para o domínio do site.
 
 
 # Application definition
@@ -42,6 +54,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -116,9 +129,26 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
+"""
 STATIC_URL = "static/"
+Esse diretório é onde o Django irá procurar os arquivos estáticos quando o DEBUG estiver como True.
+"""
+STATIC_URL = "static/"
+
+"""
+Esse diretório é onde o Django irá procurar os arquivos estáticos quando o DEBUG estiver como False.
+O comando collectstatic irá coletar todos os arquivos estáticos de todas as aplicações e colocá-los nesse diretório.
+O comando collectstatic deve ser executado antes de colocar o site em produção.
+
+O comando é:
+python manage.py collectstatic
+"""
+STATIC_ROOT = os.path.join(BASE_DIR / "staticfiles")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+
+LOGOUT_REDIRECT_URL = "/"
